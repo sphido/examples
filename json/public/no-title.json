@@ -1,0 +1,11 @@
+{
+  "file": "/Users/roman/Work/sphido/examples/json/content/no-title.html",
+  "dir": "examples/json/content",
+  "ext": ".html",
+  "base": "no-title",
+  "content": "\n<p>\n\tThis file don't have a headline or title...\n</p>",
+  "title": "no-title",
+  "slug": "no-title",
+  "date": "2018-10-01T11:04:14.000Z",
+  "tags": []
+}

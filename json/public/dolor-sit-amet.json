@@ -1,0 +1,11 @@
+{
+  "file": "/Users/roman/Work/sphido/examples/json/content/dolor-sit-amet.md",
+  "dir": "examples/json/content",
+  "ext": ".md",
+  "base": "dolor-sit-amet",
+  "content": "<h1 id=\"dolor-sit-amet\">Dolor sit amet</h1>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\nlabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris\nnisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate\nvelit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n",
+  "title": "Dolor sit amet",
+  "date": "2018-10-01T00:00:00.000Z",
+  "slug": "dolor-sit-amet",
+  "tags": []
+}
