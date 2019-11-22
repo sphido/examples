@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const {join} = require('path');
-const {existsSync, outputFile} = require('fs-extra');
+const {outputFile} = require('fs-extra');
 const {getPages} = require('@sphido/core');
 const globby = require('globby');
 
