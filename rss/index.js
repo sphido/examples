@@ -19,25 +19,23 @@ const feed = require('@sphido/feed');
 			require('@sphido/frontmatter'),
 			require('@sphido/marked'),
 			require('@sphido/meta')
-
 		],
 		page => {
 			page.link = 'https://example.com/example/' + page.base;
+			page.author = 'roman@omdesign.cz'
 		}
 	);
 
-	// 2. Save sitemap.xml
+	// 2. Save rss.xml
 	await outputFile(
-		join(__dirname, 'content', 'sitemap.xml'),
-		sitemap(pages, 'https://example.com')
+		join(__dirname, 'content', 'rss.xml'),
+		feed(pages, {
+				title: 'Untitled RSS',
+				link: 'https://example.com/',
+				description: 'This is basic rss example',
+			},
+			'https://example.com/rss.xml'
+		)
 	);
-
-
-	// 3. Save rss.xml
-	await outputFile(
-		join(__dirname, 'content', 'sitemap.xml'),
-		feed(pages, 'https://example.com')
-	);
-
 
 })();
