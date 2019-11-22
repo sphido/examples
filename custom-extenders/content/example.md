@@ -1,6 +1,6 @@
 ---
 title: Example markdown page
-slug: .
+slug: custom-extenders
 ---
 
 # This is an example
