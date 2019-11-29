@@ -21,8 +21,7 @@ const globby = require('globby');
 	for await (const page of pages) {
 		await outputFile(
 			join(page.dir, page.slug + '.json'),
-			JSON.stringify(page, null, 2)
-		);
-
+			JSON.stringify(page, (key, value) => value instanceof Set ? [...value] : value, 2)
+		)
 	}
 })();
