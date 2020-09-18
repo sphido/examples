@@ -8,36 +8,36 @@ import {markdown} from "@sphido/markdown";
 
 (async () => {
 
-	// 1. get list of pages
+
+	// 1. prepare list of pages
 
 	const pages = await getPages(
 		await globby('content/**/*.{md,html}'),
-		...[
+		frontmatter,
+		markdown,
+		meta,
 
-			frontmatter,
-			markdown,
-			meta,
+		// add custom page extender
+		(page) => {
+			page.toFile = join(
+				page.dir.replace('content', 'public'),
+				page.slug,
+				'index.html'
+			);
+		},
 
-			// add custom page extender
-			(page) => {
-				page.toFile = join(
-					page.dir.replace('content', 'public'),
-					page.slug,
-					'index.html'
-				);
-			},
-
-			// add custom page function
-			{
-				getHtml: function () {
-					return `<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charset="UTF-8"><title>${this.title}</title></head><body>${this.content}</body></html>`
-				}
+		// add custom page function
+		{
+			getHtml: function () {
+				return `<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charset="UTF-8"><title>${this.title}</title></head><body>${this.content}</body></html>`
 			}
-		],
+		}
 	);
 
 	// 2. save pages
 
-	pages.forEach(page => outputFile(page.toFile, page.getHtml()))
+	for (const page of pages) {
+		await outputFile(page.toFile, page.getHtml());
+	}
 
-})();
+})()
