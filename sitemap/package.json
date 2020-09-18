@@ -1,11 +1,16 @@
 {
+	"main": "index.js",
+	"scripts": {
+		"build": "rm -rf ./content/sitemap.xml && node -r esm index.js"
+	},
 	"dependencies": {
-		"@sphido/core": "^0.0.3",
-		"@sphido/frontmatter": "^0.0.1",
-		"@sphido/marked": "^0.0.1",
-		"@sphido/meta": "^0.0.2",
-		"@sphido/sitemap": "^0.0.4",
-		"fs-extra": "^8.1.0",
-		"globby": "^10.0.1"
+		"@sphido/core": "^0.0.6",
+		"@sphido/sitemap": "^0.0.7",
+		"@sphido/frontmatter": "^0.0.4",
+		"@sphido/markdown": "^0.0.3",
+		"@sphido/meta": "^0.0.6",
+		"esm": "^3.2.25",
+		"fs-extra": "^9.0.1",
+		"globby": "^11.0.1"
 	}
 }
