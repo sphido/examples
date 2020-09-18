@@ -1,6 +1,3 @@
 node_modules
 public
 yarn.lock
-
-*/content/*.xml
-*/content/*.json
