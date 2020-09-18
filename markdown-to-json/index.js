@@ -27,6 +27,8 @@ import {markdown} from "@sphido/markdown";
 
 	// 2. save pages
 
-	pages.forEach(page => outputFile(join(page.dir, page.slug + '.json'), page.getJson()))
+	for (const page of pages) {
+		await  outputFile(join(page.dir, page.slug + '.json'), page.getJson());
+	}
 
 })();

@@ -48,6 +48,8 @@ import {markdown} from "@sphido/markdown";
 
 	// 2. save pages
 
-	pages.forEach(page => outputFile(page.toFile, page.getHtml()))
+	for (const page of pages) {
+		await outputFile(page.toFile, page.getHtml());
+	}
 
 })();
