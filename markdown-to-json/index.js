@@ -1,27 +1,32 @@
-#!/usr/bin/env node
-
-const {join} = require('path');
-const {outputFile} = require('fs-extra');
-const {getPages} = require('@sphido/core');
-const globby = require('globby');
-
+import {join} from "path";
+import globby from "globby";
+import {getPages} from "@sphido/core";
+import frontmatter from "@sphido/frontmatter";
+import meta from "@sphido/meta";
+import {outputFile} from "fs-extra";
+import {markdown} from "@sphido/markdown";
 
 (async () => {
-	// 1. Get list of pages...
+
+	// 1. get list of pages
+
 	const pages = await getPages(
-		await globby(join(__dirname, '/content/**/*.{md,html}')),
+		await globby('content/**/*.{md,html}'),
 		...[
-			require('@sphido/frontmatter'),
-			require('@sphido/marked'),
-			require('@sphido/meta')
-		]
+
+			frontmatter,
+			markdown,
+			meta,
+			{
+				getJson: function () {
+					return JSON.stringify(this, (key, value) => value instanceof Set ? [...value] : value, 2)
+				}
+			}
+		],
 	);
 
-	// 2. Save pages... (with default HTML template)
-	for await (const page of pages) {
-		await outputFile(
-			join(page.dir, page.slug + '.json'),
-			JSON.stringify(page, (key, value) => value instanceof Set ? [...value] : value, 2)
-		)
-	}
+	// 2. save pages
+
+	pages.forEach(page => outputFile(join(page.dir, page.slug + '.json'), page.getJson()))
+
 })();

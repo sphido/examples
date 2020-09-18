@@ -1,6 +1,6 @@
 ---
 title: Basic example index
-slug: basic-example
+slug: index-example
 ---
 
 
