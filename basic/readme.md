@@ -3,7 +3,7 @@
 This is most basic example how to use Sphido: 
 
 ```bash
-yarn add @sphido/core @sphido/frontmatter @sphido/markdown @sphido/meta fs-extra esm
+yarn add @sphido/core @sphido/frontmatter @sphido/markdown @sphido/meta fs-extra esm globby
 ```
 
 ```js
