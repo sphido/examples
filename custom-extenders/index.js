@@ -27,8 +27,20 @@ import {markdown} from "@sphido/markdown";
 
 			// add custom page function
 			{
+				footer: function () {
+					return `<footer>${this.author}</footer>`
+				},
+
+				head: function () {
+					return `<head><meta charset="UTF-8"><title>${this.title}</title></head>`
+				},
+
+				body: function () {
+					return `<body>${this.content}</body>`
+				},
+
 				getHtml: function () {
-					return `<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charset="UTF-8"><title>${this.title}</title></head><body>${this.content}</body></html>`
+					return `<!DOCTYPE html><html lang="en" dir="ltr">${this.head()}${this.body()}${this.footer()}</html>`
 				}
 			}
 		],
