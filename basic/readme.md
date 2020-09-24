@@ -1,4 +1,4 @@
-# Sphido basic example (with nunjucks templates)
+# Sphido basic example
 
 This is most basic example how to use Sphido: 
 
