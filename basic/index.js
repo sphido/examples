@@ -1,13 +1,13 @@
-import {join} from "path";
 import globby from "globby";
+import fs from "fs-extra";
+import path from "path";
+
 import {getPages} from "@sphido/core";
-import frontmatter from "@sphido/frontmatter";
-import meta from "@sphido/meta";
-import {outputFile} from "fs-extra";
+import {frontmatter} from "@sphido/frontmatter";
+import {meta} from "@sphido/meta";
 import {markdown} from "@sphido/markdown";
 
 (async () => {
-
 
 	// 1. prepare list of pages
 
@@ -19,7 +19,7 @@ import {markdown} from "@sphido/markdown";
 
 		// add custom page extender
 		(page) => {
-			page.toFile = join(
+			page.toFile = path.join(
 				page.dir.replace('content', 'public'),
 				page.slug,
 				'index.html'
@@ -37,7 +37,7 @@ import {markdown} from "@sphido/markdown";
 	// 2. save pages
 
 	for (const page of pages) {
-		await outputFile(page.toFile, page.getHtml());
+		await fs.outputFile(page.toFile, page.getHtml());
 	}
 
 })()
