@@ -1,11 +1,15 @@
-import {join} from "path";
+import fs from "fs-extra";
+import path from 'path';
 import globby from "globby";
 import {getPages} from "@sphido/core";
-import frontmatter from "@sphido/frontmatter";
-import meta from "@sphido/meta";
-import {outputFile} from "fs-extra";
+
+import {fileURLToPath} from 'url'
+import {frontmatter} from "@sphido/frontmatter";
+import {meta} from "@sphido/meta";
 import {markdown} from "@sphido/markdown";
-import sitemap from "@sphido/sitemap"
+import {sitemap} from "@sphido/sitemap"
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 (async () => {
 
@@ -23,11 +27,10 @@ import sitemap from "@sphido/sitemap"
 	);
 
 	// 2. Save sitemap.xml
-	await outputFile(
-		join(__dirname, 'content', 'sitemap.xml'),
+	await fs.outputFile(
+		path.join(__dirname, 'content', 'sitemap.xml'),
 		sitemap(pages, 'https://example.com')
 	);
-
 
 })();
 
