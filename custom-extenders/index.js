@@ -1,9 +1,10 @@
-import {join} from "path";
+import path from "path";
+import fs from "fs-extra";
+
 import globby from "globby";
 import {getPages} from "@sphido/core";
-import frontmatter from "@sphido/frontmatter";
-import meta from "@sphido/meta";
-import {outputFile} from "fs-extra";
+import {frontmatter} from "@sphido/frontmatter";
+import {meta} from "@sphido/meta";
 import {markdown} from "@sphido/markdown";
 
 (async () => {
@@ -22,7 +23,7 @@ import {markdown} from "@sphido/markdown";
 			page => {
 				page.author = 'John Appleseed';
 				page.title += ' | add this all titles';
-				page.toFile = join(page.dir.replace('content', 'public'), page.slug + '.html',)
+				page.toFile = path.join(page.dir.replace('content', 'public'), page.slug + '.html',)
 			},
 
 			// add custom page function
@@ -49,7 +50,7 @@ import {markdown} from "@sphido/markdown";
 	// 2. save pages
 
 	for (const page of pages) {
-		await outputFile(page.toFile, page.getHtml());
+		await fs.outputFile(page.toFile, page.getHtml());
 	}
 
 })();
