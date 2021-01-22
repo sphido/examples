@@ -1,9 +1,9 @@
-import {join} from "path";
+import fs from "fs-extra";
+import path from "path";
 import globby from "globby";
 import {getPages} from "@sphido/core";
-import frontmatter from "@sphido/frontmatter";
-import meta from "@sphido/meta";
-import {outputFile} from "fs-extra";
+import {frontmatter} from "@sphido/frontmatter";
+import {meta} from "@sphido/meta";
 import {markdown} from "@sphido/markdown";
 
 (async () => {
@@ -13,7 +13,6 @@ import {markdown} from "@sphido/markdown";
 	const pages = await getPages(
 		await globby('content/**/*.{md,html}'),
 		...[
-
 			frontmatter,
 			markdown,
 			meta,
@@ -28,7 +27,7 @@ import {markdown} from "@sphido/markdown";
 	// 2. save pages
 
 	for (const page of pages) {
-		await  outputFile(join(page.dir, page.slug + '.json'), page.getJson());
+		await fs.outputFile(path.join(page.dir, page.slug + '.json'), page.getJson());
 	}
 
 })();
