@@ -12,7 +12,6 @@
 		"@sphido/frontmatter": "^1.0.2",
 		"@sphido/markdown": "^1.0.2",
 		"@sphido/meta": "^1.0.2",
-		"esm": "^3.2.25",
 		"fs-extra": "^9.0.1",
 		"globby": "^11.0.1"
 	}
