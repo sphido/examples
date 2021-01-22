@@ -1,11 +1,15 @@
-import {join} from "path";
+import path from "path";
+import {fileURLToPath} from 'url'
+import fs from "fs-extra";
 import globby from "globby";
+
 import {getPages} from "@sphido/core";
-import frontmatter from "@sphido/frontmatter";
-import meta from "@sphido/meta";
-import {outputFile} from "fs-extra";
+import {frontmatter} from "@sphido/frontmatter";
+import {meta} from "@sphido/meta";
 import {markdown} from "@sphido/markdown";
-import feed from "@sphido/feed"
+import {feed} from "@sphido/feed"
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 (async () => {
 
@@ -24,8 +28,8 @@ import feed from "@sphido/feed"
 	);
 
 	// 2. Save rss.xml
-	await outputFile(
-		join(__dirname, 'content', 'rss.xml'),
+	await fs.outputFile(
+		path.join(__dirname, 'content', 'rss.xml'),
 		feed(pages, {
 				title: 'Untitled RSS',
 				link: 'https://example.com/',
