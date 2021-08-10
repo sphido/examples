@@ -1,7 +1,7 @@
 import path from "path";
 import {fileURLToPath} from 'url'
 import fs from "fs-extra";
-import globby from "globby";
+import {globby} from "globby";
 
 import {getPages} from "@sphido/core";
 import {frontmatter} from "@sphido/frontmatter";
