@@ -8,11 +8,11 @@
 		"node": ">=12"
 	},
 	"dependencies": {
-		"@sphido/core": "^1.0.3",
-		"@sphido/frontmatter": "^1.0.2",
-		"@sphido/markdown": "^1.0.2",
-		"@sphido/meta": "^1.0.2",
-		"fs-extra": "^9.0.1",
-		"globby": "^11.0.1"
+		"@sphido/core": "^1.0.7",
+		"@sphido/frontmatter": "^1.0.6",
+		"@sphido/markdown": "^1.0.8",
+		"@sphido/meta": "^1.0.6",
+		"fs-extra": "^10.0.0",
+		"globby": "^12.0.0"
 	}
 }
