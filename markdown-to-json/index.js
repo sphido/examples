@@ -1,33 +1,18 @@
-import fs from "fs-extra";
-import path from "path";
-import {globby} from "globby";
-import {getPages} from "@sphido/core";
-import {frontmatter} from "@sphido/frontmatter";
-import {meta} from "@sphido/meta";
-import {markdown} from "@sphido/markdown";
+#!/usr/bin/env node
 
-(async () => {
+import {dirname, relative, join} from 'node:path';
+import {getPages, allPages, writeFile} from '@sphido/core';
+import slugify from '@sindresorhus/slugify';
+import {marked} from 'marked';
+import {frontmatter} from '@sphido/frontmatter';
 
-	// 1. get list of pages
+const pages = await getPages({path: 'content'}, frontmatter);
 
-	const pages = await getPages(
-		await globby('content/**/*.{md,html}'),
-		...[
-			frontmatter,
-			markdown,
-			meta,
-			{
-				getJson: function () {
-					return JSON.stringify(this, (key, value) => value instanceof Set ? [...value] : value, 2)
-				}
-			}
-		],
-	);
+for (const page of allPages(pages)) {
+	page.slug = slugify(page.name) + '.json';
+	const output = join('public', relative('content', dirname(page.path)), page.slug);
+	page.content = marked(page.content);
 
-	// 2. save pages
-
-	for (const page of pages) {
-		await fs.outputFile(path.join(page.dir, page.slug + '.json'), page.getJson());
-	}
-
-})();
+	// save JSON file
+	await writeFile(output, JSON.stringify(page));
+}

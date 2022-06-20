@@ -1,36 +1,18 @@
-import fs from "fs-extra";
-import path from 'path';
-import {globby} from "globby";
-import {getPages} from "@sphido/core";
+#!/usr/bin/env node
 
-import {fileURLToPath} from 'url'
-import {frontmatter} from "@sphido/frontmatter";
-import {meta} from "@sphido/meta";
-import {markdown} from "@sphido/markdown";
-import {sitemap} from "@sphido/sitemap"
+import {dirname, relative, join} from 'node:path';
+import {getPages, allPages} from '@sphido/core';
+import slugify from '@sindresorhus/slugify';
+import {createSitemap} from '@sphido/sitemap';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const pages = await getPages({path: 'content'});
+const map = await createSitemap('public/sitemap.xml');
 
-(async () => {
+map.add('https://sphido.org', new Date(), 1);
 
-	// 1. Get pages from directory
-	const pages = await getPages(
-		await globby('content/**/*.{md,html}'),
-		...[
-			frontmatter,
-			markdown,
-			meta
-		],
-		page => {
-			page.link = 'https://example.com/example/' + page.base;
-		}
-	);
+for (const page of await allPages(pages)) {
+	page.slug = join('/', relative('content', dirname(page.path)), slugify(page.name) + '.html');
+	map.add('https://sphido.org' + page.slug, new Date());
+}
 
-	// 2. Save sitemap.xml
-	await fs.outputFile(
-		path.join(__dirname, 'content', 'sitemap.xml'),
-		sitemap(pages, 'https://example.com')
-	);
-
-})();
-
+map.end();

@@ -3,7 +3,6 @@ title: Dolor sit amet
 date: 2018-10-01
 ---
 
-
 # Dolor sit amet
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut

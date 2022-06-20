@@ -1,18 +1,19 @@
 {
 	"main": "index.js",
 	"scripts": {
-		"build": "rm -rf ./public && node index.js"
+		"build": "rm -rf ./public && node index.js",
+		"start": "serve public"
 	},
 	"type": "module",
 	"engines": {
 		"node": ">=12"
 	},
 	"dependencies": {
-		"@sphido/core": "^1.0.7",
-		"@sphido/frontmatter": "^1.0.6",
-		"@sphido/markdown": "^1.0.8",
-		"@sphido/meta": "^1.0.6",
-		"fs-extra": "^10.0.0",
-		"globby": "^12.0.0"
+		"@sindresorhus/slugify": "^2.1.0",
+		"@sphido/core": "^2.0.0",
+		"marked": "^4.0.17"
+	},
+	"devDependencies": {
+		"serve": "^13.0.2"
 	}
 }
