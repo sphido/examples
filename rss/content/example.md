@@ -1,9 +1,3 @@
----
-title: Example markdown page
-slug: example
----
-
-
 # This is an example
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
