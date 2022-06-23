@@ -9,7 +9,7 @@
 	},
 	"dependencies": {
 		"@sindresorhus/slugify": "^2.1.0",
-		"@sphido/core": "^2.0.7",
+		"@sphido/core": "^2.0.9",
 		"feed": "^4.2.2",
 		"marked": "^4.0.17"
 	},
