@@ -10,7 +10,7 @@
 	},
 	"dependencies": {
 		"@sindresorhus/slugify": "^2.1.0",
-		"@sphido/core": "^2.0.9",
+		"@sphido/core": "^2.0.11",
 		"marked": "^4.0.17"
 	},
 	"devDependencies": {
