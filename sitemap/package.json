@@ -9,8 +9,8 @@
 	},
 	"dependencies": {
 		"@sindresorhus/slugify": "^2.1.0",
-		"@sphido/core": "^2.0.11",
-		"@sphido/sitemap": "^2.0.8",
+		"@sphido/core": "^2.0.12",
+		"@sphido/sitemap": "^2.0.9",
 		"marked": "^4.0.17"
 	},
 	"devDependencies": {
