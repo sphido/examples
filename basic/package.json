@@ -1,5 +1,6 @@
 {
 	"main": "index.js",
+	"private": true,
 	"scripts": {
 		"build": "rm -rf ./public && node index.js",
 		"start": "serve public"

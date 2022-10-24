@@ -1,12 +1,13 @@
 {
 	"main": "index.js",
+	"private": true,
 	"scripts": {
 		"build": "rm -rf ./public && node index.js",
 		"start": "serve public"
 	},
 	"type": "module",
 	"engines": {
-		"node": ">=12"
+		"node": ">=16"
 	},
 	"dependencies": {
 		"@sindresorhus/slugify": "^2.1.1",

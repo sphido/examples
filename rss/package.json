@@ -1,19 +1,20 @@
 {
 	"main": "index.js",
+	"private": true,
 	"scripts": {
 		"build": "rm -rf ./content/rss.xml && node index.js"
 	},
 	"type": "module",
 	"engines": {
-		"node": ">=12"
+		"node": ">=16"
 	},
 	"dependencies": {
-		"@sindresorhus/slugify": "^2.1.0",
-		"@sphido/core": "^2.0.11",
+		"@sindresorhus/slugify": "^2.1.1",
+		"@sphido/core": "^2.0.14",
 		"feed": "^4.2.2",
-		"marked": "^4.0.17"
+		"marked": "^4.1.1"
 	},
 	"devDependencies": {
-		"serve": "^13.0.2"
+		"serve": "^14.0.1"
 	}
 }
