@@ -6,15 +6,15 @@
 	},
 	"type": "module",
 	"engines": {
-		"node": ">=12"
+		"node": ">=16"
 	},
 	"dependencies": {
-		"@sindresorhus/slugify": "^2.1.0",
-		"@sphido/core": "^2.0.12",
-		"@sphido/frontmatter": "^2.0.2",
-		"marked": "^4.0.17"
+		"@sindresorhus/slugify": "^2.1.1",
+		"@sphido/core": "^2.0.14",
+		"@sphido/frontmatter": "^2.0.3",
+		"marked": "^4.1.1"
 	},
 	"devDependencies": {
-		"serve": "^13.0.2"
+		"serve": "^14.0.1"
 	}
 }
