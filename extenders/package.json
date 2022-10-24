@@ -9,11 +9,11 @@
 		"node": ">=12"
 	},
 	"dependencies": {
-		"@sindresorhus/slugify": "^2.1.0",
-		"@sphido/core": "^2.0.12",
-		"marked": "^4.0.17"
+		"@sindresorhus/slugify": "^2.1.1",
+		"@sphido/core": "^2.0.14",
+		"marked": "^4.1.1"
 	},
 	"devDependencies": {
-		"serve": "^13.0.2"
+		"serve": "^14.0.1"
 	}
 }
