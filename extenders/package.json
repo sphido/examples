@@ -10,11 +10,11 @@
 		"node": ">=16"
 	},
 	"dependencies": {
-		"@sindresorhus/slugify": "^2.1.1",
-		"@sphido/core": "^2.0.14",
-		"marked": "^4.1.1"
+		"@sindresorhus/slugify": "latest",
+		"@sphido/core": "latest",
+		"marked": "latest"
 	},
 	"devDependencies": {
-		"serve": "^14.0.1"
+		"serve": "latest"
 	}
 }

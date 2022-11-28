@@ -9,9 +9,9 @@
 		"node": ">=16"
 	},
 	"dependencies": {
-		"@sindresorhus/slugify": "^2.1.0",
-		"@sphido/core": "^2.0.12",
-		"@sphido/frontmatter": "^2.0.2",
-		"marked": "^4.0.17"
+		"@sindresorhus/slugify": "latest",
+		"@sphido/core": "latest",
+		"@sphido/frontmatter": "latest",
+		"marked": "latest"
 	}
 }
