@@ -10,12 +10,12 @@
 		"node": ">=16"
 	},
 	"dependencies": {
-		"@sindresorhus/slugify": "latest",
-		"@sphido/core": "latest",
-		"@sphido/frontmatter": "latest",
-		"marked": "latest"
+		"@sindresorhus/slugify": "2.2.1",
+		"@sphido/core": "2.0.27",
+		"@sphido/frontmatter": "2.0.15",
+		"marked": "12.0.2"
 	},
 	"devDependencies": {
-		"serve": "latest"
+		"serve": "14.2.3"
 	}
 }

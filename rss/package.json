@@ -9,12 +9,12 @@
 		"node": ">=16"
 	},
 	"dependencies": {
-		"@sindresorhus/slugify": "latest",
-		"@sphido/core": "latest",
+		"@sindresorhus/slugify": "2.2.1",
+		"@sphido/core": "2.0.27",
 		"feed": "latest",
-		"marked": "latest"
+		"marked": "12.0.2"
 	},
 	"devDependencies": {
-		"serve": "latest"
+		"serve": "14.2.3"
 	}
 }
