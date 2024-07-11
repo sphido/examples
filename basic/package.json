@@ -11,9 +11,9 @@
 	},
 	"dependencies": {
 		"@sindresorhus/slugify": "2.2.1",
-		"@sphido/core": "2.0.27",
-		"@sphido/frontmatter": "2.0.15",
-		"marked": "12.0.2"
+		"@sphido/core": "2.0.29",
+		"@sphido/frontmatter": "2.0.17",
+		"marked": "13.0.2"
 	},
 	"devDependencies": {
 		"serve": "14.2.3"

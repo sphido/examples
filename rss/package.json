@@ -10,9 +10,9 @@
 	},
 	"dependencies": {
 		"@sindresorhus/slugify": "2.2.1",
-		"@sphido/core": "2.0.27",
+		"@sphido/core": "2.0.29",
 		"feed": "latest",
-		"marked": "12.0.2"
+		"marked": "13.0.2"
 	},
 	"devDependencies": {
 		"serve": "14.2.3"
