@@ -10,8 +10,8 @@
 	},
 	"dependencies": {
 		"@sindresorhus/slugify": "2.2.1",
-		"@sphido/core": "2.0.29",
+		"@sphido/core": "2.0.30",
 		"@sphido/frontmatter": "2.0.17",
-		"marked": "13.0.2"
+		"marked": "15.0.12"
 	}
 }
