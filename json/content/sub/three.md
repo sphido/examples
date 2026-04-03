@@ -1,5 +1,5 @@
 ---
-title: This is website title
+title: This is the website title
 author: Roman Ožana
 date: 2020-01-01
 ---

@@ -29,7 +29,7 @@ for (const page of allPages(pages)) {
 	page.slug = slugify(page.name) + '.html';
 	page.output = join('public', relative('content', dirname(page.path)), page.slug);
 
-	// process markdown (PS: frontmatter already load page.content)
+	// process markdown (PS: frontmatter already loads page.content)
 	page.content = marked(page.content);
 
 	// save HTML file
