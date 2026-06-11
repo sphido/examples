@@ -7,12 +7,12 @@
 	},
 	"type": "module",
 	"engines": {
-		"node": ">=16"
+		"node": ">=22"
 	},
 	"dependencies": {
 		"@sindresorhus/slugify": "latest",
-		"@sphido/core": "2.0.30",
-		"marked": "15.0.12"
+		"@sphido/core": "^3.1.0",
+		"marked": "^18.0.0"
 	},
 	"devDependencies": {
 		"serve": "latest"

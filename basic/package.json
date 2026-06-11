@@ -7,13 +7,13 @@
 	},
 	"type": "module",
 	"engines": {
-		"node": ">=16"
+		"node": ">=22"
 	},
 	"dependencies": {
 		"@sindresorhus/slugify": "2.2.1",
-		"@sphido/core": "2.0.30",
-		"@sphido/frontmatter": "2.0.17",
-		"marked": "15.0.12"
+		"@sphido/core": "^3.1.0",
+		"@sphido/frontmatter": "^3.1.0",
+		"marked": "^18.0.0"
 	},
 	"devDependencies": {
 		"serve": "14.2.4"

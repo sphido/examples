@@ -4,7 +4,7 @@ import {dirname, relative, join} from 'node:path';
 import {getPages, allPages, writeFile, readFile} from '@sphido/core';
 import slugify from '@sindresorhus/slugify';
 import {marked} from 'marked';
-import {Feed} from 'feed';
+import {renderFeed, writeFeed} from '@sphido/feed';
 
 function getHtml({title, content, path, date}) {
 	return `<!DOCTYPE html>
@@ -12,24 +12,14 @@ function getHtml({title, content, path, date}) {
 <head>
 	<meta charset="UTF-8">
 	<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-	<title>${title} | Sphido Example page</title>	
+	<title>${title} | Sphido Example page</title>
 </head>
 <body class="prose mx-auto my-6"><main>${content}</main></body>
 <!-- Generated with Sphido from ${path} -->
 </html>`;
 }
 
-const feed = new Feed({
-	title: 'RSS example',
-	description: 'This is my personal feed!',
-	id: 'https://sphido.org/rss.xml',
-	author: {
-		name: 'Roman Ožana',
-		email: 'roman@ozana.cz',
-		link: 'https://ozana.cz',
-	},
-});
-
+const items = [];
 
 const pages = await getPages({path: 'content'});
 
@@ -40,14 +30,19 @@ for (const page of allPages(pages)) {
 	page.url = new URL(page.slug, 'https://sphido.org/').toString();
 	page.content = marked(await readFile(page.path));
 	page.title = page.content.match(/(?<=<h[12][^>]*?>)([^<>]+?)(?=<\/h[12]>)/i)?.pop();
-	page.id = page.url;
-	page.link = page.url;
-	page.description = '';
+	page.date = new Date();
 
-	feed.addItem(page);
+	items.push({title: page.title, url: page.url, date: page.date});
 
 	// save HTML file
 	await writeFile(page.output, getHtml(page));
 }
 
-await writeFile('public/rss.xml', feed.rss2());
+const xml = renderFeed({
+	title: 'RSS example',
+	link: 'https://sphido.org/',
+	description: 'This is my personal feed!',
+	feedUrl: 'https://sphido.org/rss.xml',
+}, items);
+
+await writeFeed('public/rss.xml', xml);
