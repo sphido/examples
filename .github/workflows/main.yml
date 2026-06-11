@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  schedule:
+    # weekly run catches breakage from newly released @sphido versions
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+jobs:
+  examples:
+    name: ${{ matrix.example }} on Node ${{ matrix.node-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        example: [basic, extenders, json, rss, sitemap]
+        node-version: [22, 24]
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # no lockfiles on purpose — resolving the latest matching @sphido
+      # versions is exactly what this CI is meant to test
+      - run: npm install
+        working-directory: ${{ matrix.example }}
+
+      - run: node index.js
+        working-directory: ${{ matrix.example }}
