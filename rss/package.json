@@ -12,7 +12,7 @@
 		"@sindresorhus/slugify": "2.2.1",
 		"@sphido/core": "^3.1.0",
 		"@sphido/feed": "^3.1.0",
-		"@sphido/markdown": "^1.0.0"
+		"@sphido/markdown": "^2.0.0"
 	},
 	"devDependencies": {
 		"serve": "14.2.4"
