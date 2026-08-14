@@ -5,7 +5,8 @@ Here are some examples of how to use [Sphido](https://sphido.org/), a rocket ðŸš
 
 ## [Basic usage](https://github.com/sphido/examples/tree/main/basic)
 
-This example shows how to use Sphido for processing Markdown files to HTML.
+This example shows how to use Sphido for processing Markdown files to HTML with the
+[`@sphido/markdown`](https://github.com/sphido/sphido/tree/main/packages/sphido-markdown) extender.
 
 ## [Extenders](https://github.com/sphido/examples/tree/main/extenders)
 

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 import {dirname, relative, join} from 'node:path';
-import {getPages, allPages, writeFile, readFile} from '@sphido/core';
+import {getPages, allPages, writeFile} from '@sphido/core';
 import slugify from '@sindresorhus/slugify';
-import {marked} from 'marked';
+import {markdown} from '@sphido/markdown';
 import {renderFeed, writeFeed} from '@sphido/feed';
 
 function getHtml({title, content, path, date}) {
@@ -21,14 +21,14 @@ function getHtml({title, content, path, date}) {
 
 const items = [];
 
-const pages = await getPages({path: 'content'});
+// markdown() loads each file and renders page.content to HTML
+const pages = await getPages({path: 'content'}, markdown());
 
 for (const page of allPages(pages)) {
 	page.slug = join('/', relative('content', dirname(page.path)), slugify(page.name) + '.html');
 	page.output = join('public', page.slug);
 
 	page.url = new URL(page.slug, 'https://sphido.org/').toString();
-	page.content = marked(await readFile(page.path));
 	page.title = page.content.match(/(?<=<h[12][^>]*?>)([^<>]+?)(?=<\/h[12]>)/i)?.pop();
 	page.date = new Date();
 
