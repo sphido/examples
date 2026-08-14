@@ -11,8 +11,7 @@
 	"dependencies": {
 		"@sindresorhus/slugify": "latest",
 		"@sphido/core": "^3.1.0",
-		"@sphido/sitemap": "^4.0.0",
-		"marked": "^18.0.0"
+		"@sphido/sitemap": "^4.0.0"
 	},
 	"devDependencies": {
 		"serve": "latest"

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 import {dirname, relative, join} from 'node:path';
-import {getPages, allPages, writeFile, readFile} from '@sphido/core';
+import {getPages, allPages, writeFile} from '@sphido/core';
 import slugify from '@sindresorhus/slugify';
-import {marked} from 'marked';
+import {markdown} from '@sphido/markdown';
 
 
 function metadata(page, dirent) {
@@ -17,10 +17,6 @@ function author(page) {
 	page.author = 'Roman Ožana';
 }
 
-async function getContent() {
-	return marked(await readFile(this.path));
-}
-
 const pages = await getPages({path: 'content'},
 
 	// callback extender
@@ -30,9 +26,11 @@ const pages = await getPages({path: 'content'},
 		page.date = new Date();
 	},
 
+	// extender package: renders page.content from markdown to HTML
+	markdown(),
+
 	// Object extenders
 	{
-		getContent,
 		getFooter: function () {
 			return `<footer class="border-t text-sm text-gray-500 pt-1 mt-1 text-right">Generated from file ${this.path}</footer>`;
 		},
@@ -51,7 +49,7 @@ const pages = await getPages({path: 'content'},
 </head>
 <body class="prose mx-auto my-6">
 	<header class="border-b text-2xl py-2 mb-4">Sphido Example website</header>
-	<main>${await this.getContent()}</main> 
+	<main>${this.content}</main>
 	${this.getFooter()}	
 </body>
 </html>`;

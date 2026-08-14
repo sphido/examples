@@ -3,8 +3,8 @@
 import {dirname, relative, join} from 'node:path';
 import {getPages, allPages, writeFile} from '@sphido/core';
 import slugify from '@sindresorhus/slugify';
-import {marked} from 'marked';
 import {frontmatter} from '@sphido/frontmatter';
+import {markdown} from '@sphido/markdown';
 
 function getHtml({title, content, path, date}) {
 	return `<!DOCTYPE html>
@@ -23,14 +23,13 @@ function getHtml({title, content, path, date}) {
 </html>`;
 }
 
-const pages = await getPages({path: 'content'}, frontmatter);
+// frontmatter loads page.content and reads the YAML block, markdown() renders
+// the rest to HTML — it goes last, after every extender that wants markdown
+const pages = await getPages({path: 'content'}, frontmatter, markdown());
 
 for (const page of allPages(pages)) {
 	page.slug = slugify(page.name) + '.html';
 	page.output = join('public', relative('content', dirname(page.path)), page.slug);
-
-	// process markdown (PS: frontmatter already loads page.content)
-	page.content = marked(page.content);
 
 	// save HTML file
 	await writeFile(page.output, getHtml(page));
