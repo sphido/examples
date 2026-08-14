@@ -1,0 +1,24 @@
+{
+	"main": "index.js",
+	"private": true,
+	"scripts": {
+		"build": "node index.js",
+		"rebuild": "node index.js && node index.js",
+		"clean": "rm -rf ./public ./.sphido",
+		"start": "serve public"
+	},
+	"type": "module",
+	"engines": {
+		"node": ">=22"
+	},
+	"dependencies": {
+		"@sindresorhus/slugify": "2.2.1",
+		"@sphido/cache": "^1.0.0",
+		"@sphido/core": "^3.1.0",
+		"@sphido/frontmatter": "^3.1.1",
+		"@sphido/markdown": "^2.0.0"
+	},
+	"devDependencies": {
+		"serve": "14.2.4"
+	}
+}
