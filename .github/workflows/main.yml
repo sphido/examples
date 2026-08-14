@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        example: [basic, extenders, json, rss, sitemap]
+        example: [basic, cache, extenders, json, rss, sitemap]
         node-version: [22, 24]
     steps:
       - uses: actions/checkout@v6

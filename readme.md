@@ -18,6 +18,12 @@ functions - this example shows how to use **custom extenders**.
 JSON from Markdown can be handy. This example shows how to
 generate JSON files based on Markdown files using Sphido.
 
+## [Incremental builds](https://github.com/sphido/examples/tree/main/cache)
+
+Rebuilds should cost what changed, not what the site contains. This example
+uses **`@sphido/cache`** to skip untouched pages — run it twice and the second
+run writes nothing.
+
 ## [sitemap.xml](https://github.com/sphido/examples/tree/main/sitemap)
 
 Sitemaps are an easy way for webmasters to inform search engines about 
