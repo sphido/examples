@@ -16,17 +16,22 @@ jobs:
       fail-fast: false
       matrix:
         example: [basic, extenders, json, rss, sitemap]
-        node-version: [22, 24]
+        node-version: [22, 24, 26]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v6
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 12
+
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
 
       # no lockfiles on purpose — resolving the latest matching @sphido
-      # versions is exactly what this CI is meant to test
-      - run: npm install
+      # versions is exactly what this CI is meant to test, so @sphido/*
+      # is exempt from pnpm's default one-day minimumReleaseAge
+      - run: pnpm install --config.minimum-release-age-exclude='@sphido/*'
         working-directory: ${{ matrix.example }}
 
       - run: node index.js
